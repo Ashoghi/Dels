@@ -56,7 +56,7 @@ JSON.parse(converted.user)
       // Modify or remove this function to customize the visually presented
       // way that non-critical warnings and error messages are presented to the
       // user.
-      unityInstance.SendMessage('#maneger','amir');
+      
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
           warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
@@ -128,6 +128,7 @@ JSON.parse(converted.user)
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
+            unityInstance.SendMessage('#maneger','amir');
           };
         }).catch((message) => {
           alert(message);
