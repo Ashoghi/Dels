@@ -127,7 +127,7 @@ JSON.parse(converted.user)
           progressBarFull.style.width = 100 * progress + "%";
           
         }).then((unityInstance) => {
-          unityInstance.SendMessage('tel','tel_id','amir');
+          unityInstance.SendMessage('tel','tel_id', converted.use);
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
