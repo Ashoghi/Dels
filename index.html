@@ -10,9 +10,9 @@
     </script>
     <script>
       var search = Telegram.WebApp.initData
-var converted = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
+var converted = JSON.parse( search.replace(/&/g, '","').replace(/=/g,'":"') , function(key, value) { return key===""?value:decodeURIComponent(value) })
 JSON.parse(converted.user)
-      var _id = converted.user.id;
+      var _id = converted.user;
     </script>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
