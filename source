@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+            <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script> 
      window.Telegram.WebApp.expand();
     </script>
@@ -12,6 +13,7 @@
       var search = Telegram.WebApp.initData
 var converted = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
 JSON.parse(converted.user)
+      var _id = converted.user;
     </script>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -20,15 +22,15 @@ JSON.parse(converted.user)
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-        <a>   userconvert:
+            <a>   userconvert:
       
             <script> 
   
- document.write(converted.user);
+ document.write(_id);
             </script>
     </a>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=100% height=100%></canvas>
+      <canvas id="unity-canvas" width=600 height=600></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -56,7 +58,6 @@ JSON.parse(converted.user)
       // Modify or remove this function to customize the visually presented
       // way that non-critical warnings and error messages are presented to the
       // user.
-      
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
           warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
@@ -76,13 +77,14 @@ JSON.parse(converted.user)
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/webgl2.loader.js";
+      var loaderUrl = buildUrl + "/webgl.loader.js";
       var config = {
-        dataUrl: buildUrl + "/webgl2.data",
-        frameworkUrl: buildUrl + "/webgl2.framework.js",
-        codeUrl: buildUrl + "/webgl2.wasm",
+        dataUrl: buildUrl + "/webgl.data",
+        frameworkUrl: buildUrl + "/webgl.framework.js",
+        codeUrl: buildUrl + "/webgl.wasm",
+        symbolsUrl: buildUrl + "/webgl.symbols.json",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "delaris",
+        companyName: "DefaultCompany",
         productName: "dels",
         productVersion: "1.0",
         showBanner: unityShowBanner,
@@ -113,8 +115,8 @@ JSON.parse(converted.user)
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "600px";
-        canvas.style.height = "800px";
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
       }
 
       loadingBar.style.display = "block";
@@ -124,11 +126,13 @@ JSON.parse(converted.user)
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
+          
         }).then((unityInstance) => {
+          unityInstance.SendMessage('tel','tel_id', _id);
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
-            unityInstance.SendMessage('tel','amir');
+             unityInstance.SendMessage('tel','tel_id','amir');
           };
         }).catch((message) => {
           alert(message);
