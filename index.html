@@ -13,6 +13,7 @@
 var converted = JSON.parse('{' + search.replace(/&/g, ',').replace(/=/g,':') + '}', function(key, value) { return key===''?value:decodeURIComponent(value) })
 JSON.parse(converted.user)
       var _id = converted.user;
+      let idd = _id.replace(/"/g,"|");
     </script>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -26,6 +27,13 @@ JSON.parse(converted.user)
             <script> 
   
  document.write(_id);
+            </script>
+    </a>
+        <a>   user_convert:
+      
+            <script> 
+  
+ document.write(idd);
             </script>
     </a>
     <div id="unity-container" class="unity-desktop">
