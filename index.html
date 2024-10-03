@@ -13,7 +13,8 @@
 var converted = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
 JSON.parse(converted.user)
       var _id = converted.user;
-      
+     var amir= JSON.parse(search)
+
       var idd = converted_1.user;
     </script>
     <meta charset="utf-8">
@@ -34,7 +35,7 @@ JSON.parse(converted.user)
       
             <script> 
   
- document.write(search.user);
+ document.write(amir.user);
             </script>
     </a>
             <a>   unconverted_id:
