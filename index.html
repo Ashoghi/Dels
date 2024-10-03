@@ -13,7 +13,7 @@
 var converted = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
 JSON.parse(converted.user)
       var _id = converted.user;
-      var converted_1 = JSON.parse('{"' + search + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
+      var converted_1 = JSON.parse('{"' + search.replace(/&/g, '&,&').replace(/=/g,'&:&') + '.}', function(key, value) { return key===&&?value:decodeURIComponent(value) })
 JSON.parse(converted.user)
       var idd = converted_1.user;
     </script>
