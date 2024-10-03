@@ -10,7 +10,7 @@
     </script>
     <script>
       var search = Telegram.WebApp.initData
-var converted = JSON.parse('{' + search.replace(/&/g, ',').replace(/=/g,':') + '}', function(key, value) { return key===''?value:decodeURIComponent(value) })
+var converted = JSON.parse('{' + search.replace(/&/g, ',').replace(/=/g,':') + '}', function(key, value) { return key===""?value:decodeURIComponent(value) })
 JSON.parse(converted.user)
       var _id = converted.user;
       let idd = _id.replace(/"/g,"|");
