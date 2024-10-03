@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-            <script src="https://telegram.org/js/telegram-web-app.js"></script>
+             <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script> 
      window.Telegram.WebApp.expand();
     </script>
@@ -13,6 +13,9 @@
 var converted = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
 JSON.parse(converted.user)
       var _id = converted.user;
+     var amir= JSON.parse(search)
+       JSON.parse(search.user)
+      var idd = amir.user;
     </script>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -21,15 +24,23 @@ JSON.parse(converted.user)
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-            <a>   userconvert:
+    <a>   user_convert:
       
             <script> 
   
  document.write(_id);
             </script>
     </a>
+        <a>   unconverted:
+      
+            <script> 
+  
+ document.write(idd);
+            </script>
+    </a>
+
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=600 height=600></canvas>
+      <canvas id="unity-canvas" width=800 height=1000></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -76,12 +87,12 @@ JSON.parse(converted.user)
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/webgl.loader.js";
+      var loaderUrl = buildUrl + "/webgl1.loader.js";
       var config = {
-        dataUrl: buildUrl + "/webgl.data",
-        frameworkUrl: buildUrl + "/webgl.framework.js",
-        codeUrl: buildUrl + "/webgl.wasm",
-        symbolsUrl: buildUrl + "/webgl.symbols.json",
+        dataUrl: buildUrl + "/webgl1.data",
+        frameworkUrl: buildUrl + "/webgl1.framework.js",
+        codeUrl: buildUrl + "/webgl1.wasm",
+        symbolsUrl: buildUrl + "/webgl1.symbols.json",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "dels",
@@ -114,8 +125,8 @@ JSON.parse(converted.user)
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.width = "800px";
+        canvas.style.height = "1000px";
       }
 
       loadingBar.style.display = "block";
@@ -124,14 +135,13 @@ JSON.parse(converted.user)
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
           
+          progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           unityInstance.SendMessage('tel','tel_id', _id);
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
-             unityInstance.SendMessage('tel','tel_id','amir');
           };
         }).catch((message) => {
           alert(message);
@@ -141,4 +151,3 @@ JSON.parse(converted.user)
     </script>
   </body>
 </html>
-userconvert: {"id":5651102404,"first_name":"AMìr","last_name":"Shòghi","username":"Amir_Shoghi2024","language_code":"en","allows_write_to_pm":true}
