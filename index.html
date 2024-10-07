@@ -6,7 +6,8 @@
      window.Telegram.WebApp.expand();
     </script>
     <script>
-      var nameid=window.Telegram.WebApp.InitData.user;    
+      var nameid=window.Telegram.WebApp.InitData.user; 
+      var pageURL = window.location.href;
     </script>
     <script>
       var search = Telegram.WebApp.initData
@@ -21,6 +22,11 @@ JSON.parse(converted.user)
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <a>
+      <script>
+        echo (pageURL);
+      </script>
+    </a>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=800 height=1000></canvas>
       <div id="unity-loading-bar">
