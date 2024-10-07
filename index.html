@@ -28,13 +28,6 @@ JSON.parse(converted.user)
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-           <a>   URL:
-      
-            <script> 
-  
- document.write(pageURL);
-            </script>
-    </a>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=800 height=1000></canvas>
       <div id="unity-loading-bar">
@@ -134,6 +127,7 @@ JSON.parse(converted.user)
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           unityInstance.SendMessage('tel','tel_id', _id);
+          unityInstance.SendMessage('tel','reff', pageURL);
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
