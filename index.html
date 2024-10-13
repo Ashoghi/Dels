@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
+     <script>
+      
+      var pageURL= document.URL;
+      
+    </script>
+       <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script> 
+     window.Telegram.WebApp.expand();
+    </script>
+    <script>
+      var nameid=window.Telegram.WebApp.InitData.user; 
+      
+      
+    </script>
+    <script>
+      var search = Telegram.WebApp.initData
+var converted = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
+JSON.parse(converted.user)
+      var _id = converted.user;
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | dels</title>
@@ -106,6 +126,8 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
+          unityInstance.SendMessage('tel','tel_id', _id);
+          unityInstance.SendMessage('tel','reff', pageURL);
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
